@@ -3,3 +3,5 @@ demo
 output
 # sougou IME dict
 *.scel
+# converted IME dict for libpinyin
+*.txt

@@ -7,6 +7,12 @@ from sogo_dict import SOGO_DOMAIN, SOGO_LIST, SOGO_NIKE_LIST
 PINYIN_SEP = '\''
 LIB_STR_FORMAT = lambda word, pinyin, count: f"{word} {pinyin} {count}\n"
 
+def get_sogo_dict_pair_list():
+    return [
+        (f"{v}.scel", f"{v}.txt")
+        for v in SOGO_NIKE_LIST
+    ]
+
 def get_sogo_dict():
     for idx, _ in enumerate(SOGO_LIST):
         get_sogo_dict_by_index(idx)

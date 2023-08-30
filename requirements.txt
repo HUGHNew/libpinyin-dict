@@ -1,3 +1,5 @@
+# for user-defined dict generation
 pypinyin
+# for sogo IME dict download
 requests
 # typer

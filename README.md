@@ -1,5 +1,7 @@
 # libpinyin user-dict
 
+输入法的安装参考[这里](https://hughnew.github.io/RDLog/post/2023-08/quickstart-pinyin-installation/)
+
 libpinyin 自定义用户词典
 
 - 通过 phrase-pinyin-data 项目提供大量数据
@@ -9,6 +11,29 @@ libpinyin 自定义用户词典
 
 submodules
 - [phrase-pinyin-data](https://github.com/mozillazg/phrase-pinyin-data)
+
+## 使用
+
+
+```bash
+# 下载所需工具
+pip install -r requirements.txt
+docker pull mritd/imewlconverter:latest
+git submodule update --init
+
+# 执行命令
+# 按序执行
+# 1. 创建 ouput 文件夹
+# 2. 转换 large_pinyin
+# 3. 转换 user-defined 如果存在的话
+# 4. 获取搜狗词典 相关配置在 sogo_dict.py 中
+# 5. 转换搜狗词典
+python3 main.py
+```
+
+然后在设置中添加转换后的词典
+
+![ibus-pref](user-data.png)
 
 ## 词典
 
@@ -33,5 +58,7 @@ submodules
 搜狗数据格式转换
 
 ```
-docker run --rm -it -v /dict:/dict imewlconverter -i:scel /dict/cs.scel -os:linux -ct:pinyin -o:libpy /dict/cs.txt
+docker run --rm -it -v /dict:/dict mritd/imewlconverter -i:scel /dict/cs.scel -os:linux -ct:pinyin -o:libpy /dict/cs.txt
 ```
+
+也可以使用 [Dockerfile](https://github.com/studyzy/imewlconverter/blob/master/Dockerfile) 自己构建镜像
